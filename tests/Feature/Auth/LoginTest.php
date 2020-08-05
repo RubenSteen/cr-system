@@ -47,7 +47,7 @@ class LoginTest extends TestCase
     public function a_guest_cannot_authenticate_with_the_wrong_username()
     {
         factory(User::class)->create([
-            'password' => Hash::make('supersecretpassword')
+            'password' => Hash::make('supersecretpassword'),
         ]); // Create the user
 
         $this->assertGuest();
@@ -59,7 +59,7 @@ class LoginTest extends TestCase
 
         $this->post(route('login.go'), $credentials)->assertSessionHasErrors();
 
-        $this->assertEquals(session('errors')->get('username')[0], "These credentials do not match our records.");
+        $this->assertEquals(session('errors')->get('username')[0], 'These credentials do not match our records.');
 
         $this->assertGuest($guard = null);
     }
@@ -68,7 +68,7 @@ class LoginTest extends TestCase
     public function a_guest_cannot_authenticate_with_the_wrong_password()
     {
         $user = factory(User::class)->create([
-            'password' => Hash::make('supersecretpassword')
+            'password' => Hash::make('supersecretpassword'),
         ]); // Create the user
 
         $this->assertGuest();
@@ -80,7 +80,7 @@ class LoginTest extends TestCase
 
         $this->post(route('login.go'), $credentials)->assertSessionHasErrors();
 
-        $this->assertEquals(session('errors')->get('username')[0], "These credentials do not match our records."); // Actually throws the username error since you dont wanna show that the username is right
+        $this->assertEquals(session('errors')->get('username')[0], 'These credentials do not match our records.'); // Actually throws the username error since you dont wanna show that the username is right
 
         $this->assertGuest($guard = null);
     }
@@ -95,7 +95,7 @@ class LoginTest extends TestCase
             'password' => 'somewrongpassword',
         ];
 
-        for ($i=0; $i < 5; $i++) {
+        for ($i = 0; $i < 5; $i++) {
             $this->post(route('login.go'), $credentials)->isSuccessful();
         }
 
@@ -115,7 +115,7 @@ class LoginTest extends TestCase
 
         $this->post(route('login.go'), $credentials)->assertSessionHasErrors();
 
-        $this->assertEquals(session('errors')->get('username')[0], "The username field is required.");
+        $this->assertEquals(session('errors')->get('username')[0], 'The username field is required.');
     }
 
     /** @test */
@@ -129,6 +129,6 @@ class LoginTest extends TestCase
 
         $this->post(route('login.go'), $credentials)->assertSessionHasErrors();
 
-        $this->assertEquals(session('errors')->get('password')[0], "The password field is required.");
+        $this->assertEquals(session('errors')->get('password')[0], 'The password field is required.');
     }
 }

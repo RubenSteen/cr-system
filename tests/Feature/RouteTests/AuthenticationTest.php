@@ -8,7 +8,6 @@ use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
 {
-
     /**
      * @test
      */
@@ -20,7 +19,6 @@ class AuthenticationTest extends TestCase
 
         foreach ($routeCollection as $method => $routes) {
             foreach ($routes as $url => $data) {
-
                 $ignoredRoutesArrayByMethod = $this->search($jsonRoutes['ignoredRoutes'], 'method', $method);
 
                 $ignoredRoutesArrayByMethodAndUrl = $this->search($ignoredRoutesArrayByMethod, 'url', $url);
@@ -68,7 +66,7 @@ class AuthenticationTest extends TestCase
 
     private function getJsonRoutes()
     {
-        return json_decode(file_get_contents(__DIR__ . '/Routes.json'), true);
+        return json_decode(file_get_contents(__DIR__.'/Routes.json'), true);
     }
 
     private function getLaravelRoutes()
@@ -76,14 +74,13 @@ class AuthenticationTest extends TestCase
         $seenRoutes = [];
 
         foreach (\Route::getRoutes() as $routeCollection) {
-
             foreach ($routeCollection->methods as $method) {
                 if ($method === 'HEAD') {
                     continue;
                 }
 
                 // Create methods collection
-                if (!array_key_exists($method, $seenRoutes)) {
+                if (! array_key_exists($method, $seenRoutes)) {
                     $seenRoutes[$method] = [];
                 }
 
@@ -93,7 +90,6 @@ class AuthenticationTest extends TestCase
 
                 $seenRoutes[$method][$routeCollection->uri] = $routeCollection->action;
             }
-
         }
 
         return $seenRoutes;
@@ -101,7 +97,7 @@ class AuthenticationTest extends TestCase
 
     private function search($array, $key, $value)
     {
-        $results = array();
+        $results = [];
 
         if (is_array($array)) {
             if (isset($array[$key]) && $array[$key] == $value) {
