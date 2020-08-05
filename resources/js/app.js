@@ -1,20 +1,21 @@
 require('./bootstrap');
 
 // Importing InertiaJS
-import { InertiaApp } from '@inertiajs/inertia-vue'
+import { InertiaApp } from '@inertiajs/inertia-vue';
 
 // Importing Vue JS
-import Vue from 'vue'
+import Vue from 'vue';
 
-Vue.use(InertiaApp)
+Vue.use(InertiaApp);
 
-const app = document.getElementById('app')
+const app = document.getElementById('app');
 
 new Vue({
-    render: h => h(InertiaApp, {
-        props: {
-            initialPage: JSON.parse(app.dataset.page),
-            resolveComponent: name => require(`./Pages/${name}`).default,
-        },
-    }),
-}).$mount(app)
+    render: (h) =>
+        h(InertiaApp, {
+            props: {
+                initialPage: JSON.parse(app.dataset.page),
+                resolveComponent: (name) => require(`./Pages/${name}`).default,
+            },
+        }),
+}).$mount(app);
