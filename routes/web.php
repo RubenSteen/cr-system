@@ -13,6 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return Inertia\Inertia::render('Landing');
+Route::get('login', ['as' => 'login',	'uses' => 'Auth\LoginController@showLoginForm']);
+Route::post('login', ['as' => 'login.go',	'uses' => 'Auth\LoginController@login']);
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/', function () {
+        return Inertia\Inertia::render('Landing');
+    });
+
+    Route::post('logout', ['as' => 'logout',	'uses' => 'Auth\LoginController@logout']);
 });
+
+
+

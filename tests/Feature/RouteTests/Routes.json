@@ -2,8 +2,22 @@
     "routes": [
         {
             "method": "GET",
-            "url": "/",
+            "url": "/"
+        },
+        {
+            "method": "GET",
+            "url": "login",
             "authenticated": false
+        },
+        {
+            "method": "POST",
+            "url": "login",
+            "authenticated": false,
+            "status": 302
+        },
+        {
+            "method": "POST",
+            "url": "logout"
         }
     ],
 

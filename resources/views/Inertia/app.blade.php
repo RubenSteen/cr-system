@@ -7,6 +7,10 @@
     <script src="{{ mix('/js/app.js') }}" defer></script>
 
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css"> {{-- https://tailwindui.com/documentation suggested font--}}
+
+    @routes {{-- https://github.com/tightenco/ziggy --}}
+
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
     @inertia
