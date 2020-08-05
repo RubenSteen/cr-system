@@ -6,7 +6,7 @@
     <link href="{{ mix('/css/app.css') }}" rel="stylesheet" />
     <script src="{{ mix('/js/app.js') }}" defer></script>
 
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet"> {{-- Laravel welcome.blade.php font--}}
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css"> {{-- https://tailwindui.com/documentation suggested font--}}
 </head>
 <body>
     @inertia

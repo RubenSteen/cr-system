@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+const tailwindcss = require('tailwindcss'); // Tailwind CSS (https://tailwindcss.com/docs/installation/#laravel-mix)
 
 /*
  |--------------------------------------------------------------------------
@@ -12,7 +13,11 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+    .sass('resources/sass/app.scss', 'public/css')
+        .options({
+            processCssUrls: false,
+            postCss: [ tailwindcss('tailwind.config.js') ],
+        });
 
 // https://laravel.com/docs/7.x/mix#versioning-and-cache-busting
 if (mix.inProduction()) {

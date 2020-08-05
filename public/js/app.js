@@ -1955,9 +1955,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Landing"
-});
+/* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
 
@@ -1973,7 +1971,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nhtml, body {\n    background-color: #fff;\n    color: #636b6f;\n    font-family: 'Nunito', sans-serif;\n    font-weight: 200;\n    height: 100vh;\n    margin: 0;\n}\n.full-height {\n    height: 100vh;\n}\n.flex-center {\n    align-items: center;\n    display: flex;\n    justify-content: center;\n}\n.position-ref {\n    position: relative;\n}\n.top-right {\n    position: absolute;\n    right: 10px;\n    top: 18px;\n}\n.content {\n    text-align: center;\n}\n.title {\n    font-size: 84px;\n}\n.links > a {\n    color: #636b6f;\n    padding: 0 25px;\n    font-size: 13px;\n    font-weight: 600;\n    letter-spacing: .1rem;\n    text-decoration: none;\n    text-transform: uppercase;\n}\n.m-b-md {\n    margin-bottom: 30px;\n}\n", ""]);
+exports.push([module.i, "html, body {\n  background-color: #fff;\n  color: #636b6f;\n  font-family: 'Nunito', sans-serif;\n  font-weight: 200;\n  height: 100vh;\n  margin: 0;\n}\n.full-height {\n  height: 100vh;\n}\n.flex-center {\n  align-items: center;\n  display: flex;\n  justify-content: center;\n}\n.position-ref {\n  position: relative;\n}\n.top-right {\n  position: absolute;\n  right: 10px;\n  top: 18px;\n}\n.content {\n  text-align: center;\n}\n.title {\n  font-size: 84px;\n}\n.links > a {\n  color: #636b6f;\n  padding: 0 25px;\n  font-size: 13px;\n  font-weight: 600;\n  letter-spacing: .1rem;\n  text-decoration: none;\n  text-transform: uppercase;\n}\n.m-b-md {\n  margin-bottom: 30px;\n}\n", ""]);
 
 // exports
 
