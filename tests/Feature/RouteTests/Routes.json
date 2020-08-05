@@ -1,0 +1,40 @@
+{
+    "routes": [
+        {
+            "method": "GET",
+            "url": "/",
+            "authenticated": false
+        }
+    ],
+
+    "ignoredRoutes": [
+        {
+            "method": "GET",
+            "url": "_debugbar/open"
+        },
+        {
+            "method": "GET",
+            "url": "_debugbar/clockwork/{id}"
+        },
+        {
+            "method": "GET",
+            "url": "_debugbar/telescope/{id}"
+        },
+        {
+            "method": "GET",
+            "url": "_debugbar/assets/stylesheets"
+        },
+        {
+            "method": "GET",
+            "url": "_debugbar/assets/javascript"
+        },
+        {
+            "method": "GET",
+            "url": "_debugbar/cache/{key}/{tags?}"
+        },
+        {
+            "method": "DELETE",
+            "url": "_debugbar/cache/{key}/{tags?}"
+        }
+    ]
+}
