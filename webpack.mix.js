@@ -13,3 +13,8 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css');
+
+// https://laravel.com/docs/7.x/mix#versioning-and-cache-busting
+if (mix.inProduction()) {
+    mix.version();
+}
