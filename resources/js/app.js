@@ -7,7 +7,7 @@ import { InertiaApp } from '@inertiajs/inertia-vue';
 import Vue from 'vue';
 
 // Use laravel Routes in your application (https://github.com/tightenco/ziggy)
-Vue.prototype.$route = (...args) => route(...args).url()
+Vue.prototype.$route = (...args) => route(...args).url();
 
 Vue.use(InertiaApp);
 
