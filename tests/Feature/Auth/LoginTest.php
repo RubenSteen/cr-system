@@ -107,6 +107,36 @@ class LoginTest extends TestCase
     }
 
     /** @test */
+    public function a_guest_cannot_authenticate_with_a_inactive_user()
+    {
+        $user = factory(User::class)->create([
+            'password' => Hash::make('supersecretpassword'),
+            'active' => false,
+        ]); // Create the user
+
+        $credentials = [
+            'username' => $user->username,
+            'password' => 'supersecretpassword',
+        ];
+
+        $this->post(route('login.go'), $credentials)->assertSessionHasErrors();
+
+        $this->assertEquals(session('errors')->get('username')[0], 'These credentials do not match our records.');
+
+        $this->assertGuest();
+    }
+
+    /** @test */
+    public function a_inactive_logged_in_user_will_automatically_be_logged_out_due_the_middleware()
+    {
+        $this->signIn(['active' => false]);
+
+        $this->get(route('home'))
+            ->assertRedirect(route('login'))
+            ->assertSessionHas('warning', 'Your account has been set to inactive, you have been logged out.');
+    }
+
+    /** @test */
     public function the_username_is_required_while_logging_in()
     {
         $user = factory(User::class)->create(); // Create the user

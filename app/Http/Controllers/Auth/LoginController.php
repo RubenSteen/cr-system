@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class LoginController extends Controller
@@ -53,5 +54,22 @@ class LoginController extends Controller
     public function username()
     {
         return 'username';
+    }
+
+    /**
+     * Attempt to log the user into the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return bool
+     */
+    protected function attemptLogin(Request $request)
+    {
+        // User has to be active to be able to login
+        $credentials = array_merge($this->credentials($request), ['active' => 1]);
+
+        if (\Auth::attempt($credentials)) {
+            return true;
+        }
+        return false;
     }
 }

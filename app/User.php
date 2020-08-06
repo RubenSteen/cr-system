@@ -29,7 +29,13 @@ class User extends Authenticatable
     ];
 
     protected $casts = [
+        'active' => 'boolean',
         'admin' => 'boolean',
         'last_password_change' => 'datetime',
     ];
+
+    public function isActive()
+    {
+        return $this->active;
+    }
 }
