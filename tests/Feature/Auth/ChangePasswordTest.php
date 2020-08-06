@@ -99,4 +99,23 @@ class ChangePasswordTest extends TestCase
 
         $this->assertEquals(session('errors')->get('password')[0], 'The password must be at least 6 characters.');
     }
+
+    /** @test */
+    public function the_last_password_change_column_will_get_updated_when_while_changing_password()
+    {
+        $this->signIn(['last_password_change' => now()->subSeconds(5)]);
+
+        $old_last_password_change = Auth::user()->last_password_change;
+
+        $data = [
+            'username' => Auth::user()->username,
+            'password' => 'Chan9edSuperStr0n9Passw0rd!',
+        ];
+
+        $data['confirm_password'] = $data['password'];
+
+        $this->patch(route('change-password.go'), $data);
+
+        $this->assertNotEquals($old_last_password_change, Auth::user()->last_password_change);
+    }
 }
