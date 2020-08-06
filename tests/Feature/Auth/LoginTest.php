@@ -12,6 +12,7 @@ class LoginTest extends TestCase
 {
     use RefreshDatabase;
 
+    /** @test */
     public function test_guest_can_view_a_login_form()
     {
         $this->assertGuest();
@@ -19,6 +20,7 @@ class LoginTest extends TestCase
         $this->get(route('login'))->assertStatus(200);
     }
 
+    /** @test */
     public function test_user_cannot_view_a_login_form_when_authenticated()
     {
         $this->signIn();
