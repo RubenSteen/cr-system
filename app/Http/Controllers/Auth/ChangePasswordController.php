@@ -36,7 +36,7 @@ class ChangePasswordController extends Controller
         $this->validatePassword($request);
 
         Auth::user()->update([
-            'password' => Hash::make($request->password)
+            'password' => Hash::make($request->password),
         ]);
 
         return redirect()->route('home')->with('success', 'Your password has been changed!');

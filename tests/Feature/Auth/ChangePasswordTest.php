@@ -85,6 +85,7 @@ class ChangePasswordTest extends TestCase
 
         $this->assertEquals(session('errors')->get('confirm_password')[0], 'The confirm password and password must match.');
     }
+
     /** @test */
     public function the_password_should_be_a_minimum_of_6_characters_while_changing_password()
     {
@@ -98,5 +99,4 @@ class ChangePasswordTest extends TestCase
 
         $this->assertEquals(session('errors')->get('password')[0], 'The password must be at least 6 characters.');
     }
-
 }

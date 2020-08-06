@@ -17,7 +17,6 @@ Route::get('login', ['as' => 'login',	'uses' => 'Auth\LoginController@showLoginF
 Route::post('login', ['as' => 'login.go',	'uses' => 'Auth\LoginController@login']);
 
 Route::group(['middleware' => ['auth']], function () {
-
     Route::get('/', function () {
         return Inertia\Inertia::render('Landing');
     })->name('home');
@@ -26,5 +25,4 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('change-password', ['as' => 'change-password',  'uses' => 'Auth\ChangePasswordController@showForm']);
     Route::patch('change-password', ['as' => 'change-password.go', 'uses' => 'Auth\ChangePasswordController@update']);
-
 });
