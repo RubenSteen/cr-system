@@ -28,7 +28,8 @@ class User extends Authenticatable
         'password',
     ];
 
-    protected $dates = [
-        'last_password_change',
+    protected $casts = [
+        'admin' => 'boolean',
+        'last_password_change' => 'datetime',
     ];
 }

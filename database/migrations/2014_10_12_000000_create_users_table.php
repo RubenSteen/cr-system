@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('email');
+            $table->boolean('admin')->default(false);
             $table->string('password');
             $table->timestamp('last_password_change')->useCurrent();
             $table->timestamps();
