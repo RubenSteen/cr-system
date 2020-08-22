@@ -17,6 +17,13 @@ mix.js('resources/js/app.js', 'public/js')
         .options({
             processCssUrls: false,
             postCss: [ tailwindcss('tailwind.config.js') ],
+        })
+        .webpackConfig({
+            resolve: {
+                alias: {
+                    '@': path.resolve('resources/js'),
+                },
+            },
         });
 
 // https://laravel.com/docs/7.x/mix#versioning-and-cache-busting
