@@ -70,6 +70,7 @@ class LoginController extends Controller
         if (\Auth::attempt($credentials)) {
             return true;
         }
+
         return false;
     }
 }
