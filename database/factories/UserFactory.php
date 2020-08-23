@@ -27,5 +27,14 @@ $factory->define(User::class, function (Faker $faker) {
         'admin' => false,
         'password' => Hash::make('password'),
         'last_password_change' => now(),
+        'date_of_birth' => $faker->date,
+        'street_name' => $faker->streetName,
+        'house_number' => $faker->buildingNumber,
+        'zip_code' => $faker->postcode,
+        'city' => $faker->city,
+        'province' => $faker->state,
+        'phone_number' => '0000000000',
+        'mobile_number' => '0600000000',
+        'comment' => $faker->realText(rand(20,60)),
     ];
 });

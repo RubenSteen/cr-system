@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'first_name', 'last_name', 'email', 'password', 'last_password_change',
+        'username', 'first_name', 'last_name', 'email', 'password', 'last_password_change', 'date_of_birth', 'street_name', 'house_number', 'zip_code', 'city', 'province', 'phone_number', 'mobile_number', 'comment',
     ];
 
     /**
@@ -32,10 +32,23 @@ class User extends Authenticatable
         'active' => 'boolean',
         'admin' => 'boolean',
         'last_password_change' => 'datetime',
+        'date_of_birth' => 'date',
     ];
+
+    public static function boot()
+    {
+        parent::boot();
+
+        User::observe(Observers\UserObserver::class);
+    }
 
     public function isActive()
     {
         return $this->active;
+    }
+
+    public function isAdmin()
+    {
+        return $this->admin;
     }
 }

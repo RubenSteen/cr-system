@@ -25,4 +25,21 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('change-password', ['as' => 'change-password',  'uses' => 'Auth\ChangePasswordController@showForm']);
     Route::patch('change-password', ['as' => 'change-password.go', 'uses' => 'Auth\ChangePasswordController@update']);
+
+    /*
+    |--------------------------------------------------------------------------
+    | Admin Routes
+    |--------------------------------------------------------------------------
+    |
+    */
+    Route::group(['middleware' => ['web'], 'namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.'], function () {
+
+        Route::get('users', ['as' => 'user.index', 'uses' => 'UserController@index']);
+        Route::get('user/create', ['as' => 'user.create', 'uses' => 'UserController@create']);
+        Route::post('user', ['as' => 'user.store', 'uses' => 'UserController@store']);
+
+    });
+
 });
+
+

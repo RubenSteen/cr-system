@@ -24,6 +24,15 @@ class CreateUsersTable extends Migration
             $table->boolean('active')->default(false);
             $table->string('password');
             $table->timestamp('last_password_change')->useCurrent();
+            $table->date('date_of_birth')->nullable();
+            $table->string('street_name')->nullable();
+            $table->string('house_number')->nullable();
+            $table->string('zip_code')->nullable();
+            $table->string('city')->nullable();
+            $table->string('province')->nullable();
+            $table->string('phone_number')->nullable();
+            $table->string('mobile_number')->nullable();
+            $table->text('comment')->nullable();
             $table->timestamps();
         });
     }

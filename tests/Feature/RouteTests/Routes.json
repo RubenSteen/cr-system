@@ -26,6 +26,18 @@
         {
             "method": "PATCH",
             "url": "change-password"
+        },
+        {
+            "method": "GET",
+            "url": "admin/users"
+        },
+        {
+            "method": "GET",
+            "url": "admin/user/create"
+        },
+        {
+            "method": "POST",
+            "url": "admin/user"
         }
     ],
 
