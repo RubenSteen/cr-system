@@ -203,6 +203,22 @@ class UserStoreTest extends TestCase
     /**
      * @test
      */
+    public function field_email_must_be_unique_while_storing_a_user()
+    {
+        $this->signIn(['admin' => true]);
+
+        $data = factory(User::class)->raw(['email' => 'some@email.com']);
+
+        $this->post(route('admin.user.store'), $data)->isSuccessful();
+
+        $this->post(route('admin.user.store'), $data)->assertSessionHasErrors();
+
+        $this->assertEquals(session('errors')->get('email')[0], "The email has already been taken.");
+    }
+
+    /**
+     * @test
+     */
     public function field_date_of_birth_must_be_a_type_of_date_while_storing_a_user()
     {
         $this->signIn(['admin' => true]);

@@ -30,7 +30,7 @@ class UserCreate extends FormRequest
             'username' => 'required|string|unique:App\User,username',
             'first_name' => 'required|string',
             'last_name' => 'required|string',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:App\User,email',
             'admin' => 'required|boolean',
             'active' => 'required|boolean',
             'date_of_birth' => 'nullable|string|date',
