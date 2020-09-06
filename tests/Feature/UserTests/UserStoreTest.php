@@ -10,6 +10,8 @@ class UserStoreTest extends TestCase
 {
     use RefreshDatabase;
 
+    private $namedRoute = "admin.user.store";
+
     /** @test */
     public function a_authenticated_user_cannot_store_a_user()
     {
@@ -17,7 +19,7 @@ class UserStoreTest extends TestCase
 
         $data = factory(User::class)->raw();
 
-        $this->post(route('admin.user.store'), $data)->assertForbidden();
+        $this->post(route($this->namedRoute), $data)->assertForbidden();
     }
 
     /** @test */
@@ -27,7 +29,7 @@ class UserStoreTest extends TestCase
 
         $data = factory(User::class)->raw();
 
-        $this->post(route('admin.user.store'), $data)
+        $this->post(route($this->namedRoute), $data)
             ->assertRedirect(route('admin.user.index'));
 
         $this->assertDatabaseHas((new User)->getTable(), ['username' => $data['username']]);
@@ -62,7 +64,7 @@ class UserStoreTest extends TestCase
 
         $data = factory(User::class)->raw([$field => '']);
 
-        $this->post(route('admin.user.store'), $data)->assertSessionHasErrors();
+        $this->post(route($this->namedRoute), $data)->assertSessionHasErrors();
 
         $this->assertEquals(session('errors')->get($field)[0], $error);
     }
@@ -100,7 +102,7 @@ class UserStoreTest extends TestCase
 
         $data = factory(User::class)->raw([$field => true]);
 
-        $this->post(route('admin.user.store'), $data)->assertSessionHasErrors();
+        $this->post(route($this->namedRoute), $data)->assertSessionHasErrors();
 
         $this->assertEquals(session('errors')->get($field)[0], $error);
     }
@@ -129,7 +131,7 @@ class UserStoreTest extends TestCase
 
         $data = factory(User::class)->raw([$field => 'not a boolean']);
 
-        $this->post(route('admin.user.store'), $data)->assertSessionHasErrors();
+        $this->post(route($this->namedRoute), $data)->assertSessionHasErrors();
 
         $this->assertEquals(session('errors')->get($field)[0], $error);
     }
@@ -165,7 +167,7 @@ class UserStoreTest extends TestCase
 
         $data = factory(User::class)->raw([$field => null]);
 
-        $this->post(route('admin.user.store'), $data);
+        $this->post(route($this->namedRoute), $data);
 
         $this->assertDatabaseHas((new User)->getTable(), ['username' => $data['username']]);
     }
@@ -179,7 +181,7 @@ class UserStoreTest extends TestCase
 
         $data = factory(User::class)->raw(['email' => 'not a email']);
 
-        $this->post(route('admin.user.store'), $data)->assertSessionHasErrors();
+        $this->post(route($this->namedRoute), $data)->assertSessionHasErrors();
 
         $this->assertEquals(session('errors')->get('email')[0], "The email must be a valid email address.");
     }
@@ -193,9 +195,9 @@ class UserStoreTest extends TestCase
 
         $data = factory(User::class)->raw(['username' => 'xX360SniperNoScopeXx']);
 
-        $this->post(route('admin.user.store'), $data)->isSuccessful();
+        $this->post(route($this->namedRoute), $data)->isSuccessful();
 
-        $this->post(route('admin.user.store'), $data)->assertSessionHasErrors();
+        $this->post(route($this->namedRoute), $data)->assertSessionHasErrors();
 
         $this->assertEquals(session('errors')->get('username')[0], "The username has already been taken.");
     }
@@ -209,9 +211,9 @@ class UserStoreTest extends TestCase
 
         $data = factory(User::class)->raw(['email' => 'some@email.com']);
 
-        $this->post(route('admin.user.store'), $data)->isSuccessful();
+        $this->post(route($this->namedRoute), $data)->isSuccessful();
 
-        $this->post(route('admin.user.store'), $data)->assertSessionHasErrors();
+        $this->post(route($this->namedRoute), $data)->assertSessionHasErrors();
 
         $this->assertEquals(session('errors')->get('email')[0], "The email has already been taken.");
     }
@@ -225,7 +227,7 @@ class UserStoreTest extends TestCase
 
         $data = factory(User::class)->raw(['date_of_birth' => 'not a date value']);
 
-        $this->post(route('admin.user.store'), $data)->assertSessionHasErrors();
+        $this->post(route($this->namedRoute), $data)->assertSessionHasErrors();
 
         $this->assertEquals(session('errors')->get('date_of_birth')[0], "The date of birth is not a valid date.");
     }
@@ -239,7 +241,7 @@ class UserStoreTest extends TestCase
 
         $data = factory(User::class)->raw(['comment' => \Str::random(201)]);
 
-        $this->post(route('admin.user.store'), $data)->assertSessionHasErrors();
+        $this->post(route($this->namedRoute), $data)->assertSessionHasErrors();
 
         $this->assertEquals(session('errors')->get('comment')[0], "The comment may not be greater than 200 characters.");
     }
