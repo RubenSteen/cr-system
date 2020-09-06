@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\QuestionPictureTests;
+namespace Tests\Feature\UserTests;
 
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
