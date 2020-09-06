@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "14d41606c3d814fd9b8b8213c39d9e82",
+    "content-hash": "9700fdb401df96b34e3a55b9b3e8883c",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -709,20 +709,20 @@
         },
         {
             "name": "inertiajs/inertia-laravel",
-            "version": "v0.2.7",
+            "version": "v0.2.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/inertiajs/inertia-laravel.git",
-                "reference": "3452e37170f78481c3ab04e50bdca66143c27c08"
+                "reference": "3e2a01f996294f070dff686c9ec61133a5805293"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/inertiajs/inertia-laravel/zipball/3452e37170f78481c3ab04e50bdca66143c27c08",
-                "reference": "3452e37170f78481c3ab04e50bdca66143c27c08",
+                "url": "https://api.github.com/repos/inertiajs/inertia-laravel/zipball/3e2a01f996294f070dff686c9ec61133a5805293",
+                "reference": "3e2a01f996294f070dff686c9ec61133a5805293",
                 "shasum": ""
             },
             "require": {
-                "laravel/framework": "^5.4|^6.0|^7.0"
+                "laravel/framework": "^5.4|^6.0|^7.0|^8.0"
             },
             "require-dev": {
                 "orchestra/testbench": "~3.0"
@@ -765,7 +765,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-08-21T17:49:34+00:00"
+            "time": "2020-09-05T11:42:23+00:00"
         },
         {
             "name": "laravel/framework",
@@ -4694,6 +4694,66 @@
                 }
             ],
             "time": "2018-12-13T10:34:14+00:00"
+        },
+        {
+            "name": "claudiodekker/inertia-laravel-testing",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/claudiodekker/inertia-laravel-testing.git",
+                "reference": "1389d64011c163f68763b6f5f678b5e53251dc05"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/claudiodekker/inertia-laravel-testing/zipball/1389d64011c163f68763b6f5f678b5e53251dc05",
+                "reference": "1389d64011c163f68763b6f5f678b5e53251dc05",
+                "shasum": ""
+            },
+            "require": {
+                "inertiajs/inertia-laravel": "^v0.2.8",
+                "laravel/framework": "^6.0|^7.0|^8.0",
+                "php": "^7.2"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^4.0|^5.0|^6.0",
+                "phpunit/phpunit": "^8.0|^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "ClaudioDekker\\Inertia\\InertiaTestingServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ClaudioDekker\\Inertia\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Claudio Dekker",
+                    "email": "claudio@ubient.net",
+                    "homepage": "https://dekker.io",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Testing helpers for https://github.com/inertiajs/inertia-laravel",
+            "homepage": "https://github.com/claudiodekker/inertia-laravel-testing",
+            "keywords": [
+                "claudiodekker",
+                "helpers",
+                "inertia",
+                "laravel",
+                "phpunit",
+                "testing"
+            ],
+            "time": "2020-09-03T11:21:04+00:00"
         },
         {
             "name": "composer/ca-bundle",
