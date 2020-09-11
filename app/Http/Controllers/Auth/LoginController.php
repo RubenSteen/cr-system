@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -47,6 +48,10 @@ class LoginController extends Controller
      */
     public function showLoginForm()
     {
+        if (User::all()->count() === 0) {
+            return redirect()->route('setup')->with('info', 'No users are found in the database, the application is now in setup mode. Please create a user to continue...');
+        }
+
         return Inertia::render('Auth/Login');
     }
 

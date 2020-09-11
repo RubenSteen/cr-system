@@ -7,7 +7,8 @@
         {
             "method": "GET",
             "url": "login",
-            "authenticated": false
+            "authenticated": false,
+            "status": 302
         },
         {
             "method": "POST",
@@ -38,6 +39,17 @@
         {
             "method": "POST",
             "url": "admin/user"
+        },
+        {
+            "method": "GET",
+            "url": "setup",
+            "authenticated": false
+        },
+        {
+            "method": "POST",
+            "url": "setup",
+            "authenticated": false,
+            "status": 302
         }
     ],
 

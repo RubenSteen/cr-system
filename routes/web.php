@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('setup', ['as' => 'setup',	'uses' => 'SetupController@show']);
+Route::post('setup', ['as' => 'setup.go',	'uses' => 'SetupController@persist']);
+
 Route::get('login', ['as' => 'login',	'uses' => 'Auth\LoginController@showLoginForm']);
 Route::post('login', ['as' => 'login.go',	'uses' => 'Auth\LoginController@login']);
 

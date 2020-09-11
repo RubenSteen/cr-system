@@ -13,15 +13,23 @@ class LoginTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function test_guest_can_view_a_login_form()
+    public function shows_setup_page_when_no_users_exist_in_the_database()
     {
+        $this->get(route('login'))->assertRedirect(route('setup'));
+    }
+
+    /** @test */
+    public function guest_can_view_a_login_form_when_a_user_exists_in_the_database()
+    {
+        $this->createUser();
+
         $this->assertGuest();
 
         $this->get(route('login'))->assertStatus(200);
     }
 
     /** @test */
-    public function test_user_cannot_view_a_login_form_when_authenticated()
+    public function user_cannot_view_a_login_form_when_authenticated()
     {
         $this->signIn();
 
