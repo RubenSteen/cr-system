@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\User;
+use Facades\App\Http\Requests\User\UserCreate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
-use Facades\App\Http\Requests\User\UserCreate;
 
 class UserController extends AdminBaseController
 {
@@ -17,7 +17,6 @@ class UserController extends AdminBaseController
      */
     public function index()
     {
-
         $users = User::paginate(15)->map(function (User $user) {
             return [
                 'id' => $user->id,

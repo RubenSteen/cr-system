@@ -11,7 +11,7 @@ class SetupTest extends TestCase
 {
     use RefreshDatabase;
 
-    private $namedRoute = "setup.go";
+    private $namedRoute = 'setup.go';
 
     private function userData($overrides = [], $password = 'SomeStrongPassword123')
     {

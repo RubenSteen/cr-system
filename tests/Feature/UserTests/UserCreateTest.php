@@ -9,7 +9,7 @@ class UserCreateTest extends TestCase
 {
     use RefreshDatabase;
 
-    private $namedRoute = "admin.user.create";
+    private $namedRoute = 'admin.user.create';
 
     /** @test */
     public function a_authenticated_user_cannot_view_the_create_page()

@@ -11,7 +11,7 @@ class UserIndexTest extends TestCase
 {
     use RefreshDatabase;
 
-    private $namedRoute = "admin.user.index";
+    private $namedRoute = 'admin.user.index';
 
     /** @test */
     public function a_authenticated_user_cannot_view_the_index_page()
@@ -56,7 +56,6 @@ class UserIndexTest extends TestCase
             'admin' => $user->admin,
             'created_at' => readable_date_time_string($user->created_at),
         ]);
-
     }
 
     /** @test */
@@ -66,8 +65,8 @@ class UserIndexTest extends TestCase
 
         for ($i = 1; $i <= 100; $i++) {
             $this->createUser([
-                'admin' => rand(0,1) == true, // Random true/false value
-                'active' => rand(0,1) == true, // Random true/false value
+                'admin' => rand(0, 1) == true, // Random true/false value
+                'active' => rand(0, 1) == true, // Random true/false value
             ]);
         }
 
@@ -76,6 +75,5 @@ class UserIndexTest extends TestCase
         $response->assertInertiaHas('users', function ($value) use ($amount) {
             return count($value) === $amount; // Checks if the prop only holds a x amount of users
         });
-
     }
 }
