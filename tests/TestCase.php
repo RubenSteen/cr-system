@@ -55,9 +55,9 @@ abstract class TestCase extends BaseTestCase
     protected function signIn($data = null)
     {
         if (is_null($data)) {
-            $user = $this->actingAs(factory(User::class)->create());
+            $user = $this->actingAs($this->createUser());
         } elseif (is_array($data)) {
-            $user = $this->actingAs(factory(User::class)->create($data));
+            $user = $this->actingAs($this->createUser($data));
         } elseif ($data instanceof User) {
             $user = $this->actingAs($data);
         } else {
@@ -65,5 +65,16 @@ abstract class TestCase extends BaseTestCase
         }
 
         return $user;
+    }
+
+    protected function createUser($overrides = [], $amount = 1)
+    {
+        $users = factory(User::class, $amount)->create($overrides);
+
+        if ($amount > 1) {
+            return $users;
+        }
+
+        return $users->first();
     }
 }
