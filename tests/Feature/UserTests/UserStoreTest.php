@@ -36,7 +36,7 @@ class UserStoreTest extends TestCase
             ->assertRedirect(route('admin.user.index'));
 
         $this->assertDatabaseHas((new User)->getTable(), array_merge($data, [
-            'date_of_birth' => $data['date_of_birth'] . " 00:00:00",
+            'date_of_birth' => $data['date_of_birth'].' 00:00:00',
         ]));
     }
 
