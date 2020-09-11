@@ -35,7 +35,9 @@ class UserStoreTest extends TestCase
         $this->post(route($this->namedRoute), $data)
             ->assertRedirect(route('admin.user.index'));
 
-        $this->assertDatabaseHas((new User)->getTable(), $data);
+        $this->assertDatabaseHas((new User)->getTable(), array_merge($data, [
+            'date_of_birth' => $data['date_of_birth'] . " 00:00:00",
+        ]));
     }
 
     public function requiredFields()
