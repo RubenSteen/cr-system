@@ -51,4 +51,15 @@ class User extends Authenticatable
     {
         return $this->admin;
     }
+
+    public function fullName()
+    {
+        $string = "";
+
+        if (!is_null($this->first_name)) {
+            $string .= "{$this->first_name} ";
+        }
+
+        return $string .= $this->last_name;
+    }
 }
