@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use App\Http\Requests\User\UserCreate;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
@@ -37,7 +37,7 @@ class SetupController extends Controller
     }
 
     /**
-     * Does the needed action so the application is useable
+     * Does the needed action so the application is useable.
      *
      * @return \Illuminate\Http\RedirectResponse
      */

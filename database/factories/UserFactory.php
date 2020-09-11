@@ -35,6 +35,6 @@ $factory->define(User::class, function (Faker $faker) {
         'province' => $faker->state,
         'phone_number' => '0000000000',
         'mobile_number' => '0600000000',
-        'comment' => $faker->realText(rand(20,60)),
+        'comment' => $faker->realText(rand(20, 60)),
     ];
 });

@@ -66,7 +66,7 @@ class UserCreate extends FormRequest
     }
 
     /**
-     * Password rules which does not get used often in this application
+     * Password rules which does not get used often in this application.
      *
      * @return array
      */

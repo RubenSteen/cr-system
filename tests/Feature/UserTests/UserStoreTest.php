@@ -11,7 +11,7 @@ class UserStoreTest extends TestCase
 {
     use RefreshDatabase;
 
-    private $namedRoute = "admin.user.store";
+    private $namedRoute = 'admin.user.store';
 
     /** @test */
     public function a_authenticated_user_cannot_store_a_user()
@@ -37,7 +37,6 @@ class UserStoreTest extends TestCase
 
         $this->assertDatabaseHas((new User)->getTable(), $data);
     }
-
 
     public function requiredFields()
     {
@@ -78,13 +77,13 @@ class UserStoreTest extends TestCase
             ['field' => 'username'],
             ['field' => 'first_name', 'prettyFieldName' => 'first name'],
             ['field' => 'last_name', 'prettyFieldName' => 'last name'],
-            ['field' => 'street_name' , 'prettyFieldName' => 'street name'],
-            ['field' => 'house_number' , 'prettyFieldName' => 'house number'],
-            ['field' => 'zip_code' , 'prettyFieldName' => 'zip code'],
+            ['field' => 'street_name', 'prettyFieldName' => 'street name'],
+            ['field' => 'house_number', 'prettyFieldName' => 'house number'],
+            ['field' => 'zip_code', 'prettyFieldName' => 'zip code'],
             ['field' => 'city'],
             ['field' => 'province'],
-            ['field' => 'phone_number' , 'prettyFieldName' => 'phone number'],
-            ['field' => 'mobile_number' , 'prettyFieldName' => 'mobile number'],
+            ['field' => 'phone_number', 'prettyFieldName' => 'phone number'],
+            ['field' => 'mobile_number', 'prettyFieldName' => 'mobile number'],
             ['field' => 'comment'],
         ];
     }
@@ -142,14 +141,14 @@ class UserStoreTest extends TestCase
     public function canBeNull()
     {
         return [
-            ['field' => 'date_of_birth' , 'prettyFieldName' => 'date of birth'],
-            ['field' => 'street_name' , 'prettyFieldName' => 'street name'],
-            ['field' => 'house_number' , 'prettyFieldName' => 'house number'],
-            ['field' => 'zip_code' , 'prettyFieldName' => 'zip code'],
+            ['field' => 'date_of_birth', 'prettyFieldName' => 'date of birth'],
+            ['field' => 'street_name', 'prettyFieldName' => 'street name'],
+            ['field' => 'house_number', 'prettyFieldName' => 'house number'],
+            ['field' => 'zip_code', 'prettyFieldName' => 'zip code'],
             ['field' => 'city'],
             ['field' => 'province'],
-            ['field' => 'phone_number' , 'prettyFieldName' => 'phone number'],
-            ['field' => 'mobile_number' , 'prettyFieldName' => 'mobile number'],
+            ['field' => 'phone_number', 'prettyFieldName' => 'phone number'],
+            ['field' => 'mobile_number', 'prettyFieldName' => 'mobile number'],
             ['field' => 'comment'],
         ];
     }
@@ -186,7 +185,7 @@ class UserStoreTest extends TestCase
 
         $this->post(route($this->namedRoute), $data)->assertSessionHasErrors();
 
-        $this->assertEquals(session('errors')->get('email')[0], "The email must be a valid email address.");
+        $this->assertEquals(session('errors')->get('email')[0], 'The email must be a valid email address.');
     }
 
     /**
@@ -202,7 +201,7 @@ class UserStoreTest extends TestCase
 
         $this->post(route($this->namedRoute), $data)->assertSessionHasErrors();
 
-        $this->assertEquals(session('errors')->get('username')[0], "The username has already been taken.");
+        $this->assertEquals(session('errors')->get('username')[0], 'The username has already been taken.');
     }
 
     /**
@@ -218,7 +217,7 @@ class UserStoreTest extends TestCase
 
         $this->post(route($this->namedRoute), $data)->assertSessionHasErrors();
 
-        $this->assertEquals(session('errors')->get('email')[0], "The email has already been taken.");
+        $this->assertEquals(session('errors')->get('email')[0], 'The email has already been taken.');
     }
 
     /**
@@ -232,7 +231,7 @@ class UserStoreTest extends TestCase
 
         $this->post(route($this->namedRoute), $data)->assertSessionHasErrors();
 
-        $this->assertEquals(session('errors')->get('date_of_birth')[0], "The date of birth is not a valid date.");
+        $this->assertEquals(session('errors')->get('date_of_birth')[0], 'The date of birth is not a valid date.');
     }
 
     /**
@@ -246,6 +245,6 @@ class UserStoreTest extends TestCase
 
         $this->post(route($this->namedRoute), $data)->assertSessionHasErrors();
 
-        $this->assertEquals(session('errors')->get('comment')[0], "The comment may not be greater than 200 characters.");
+        $this->assertEquals(session('errors')->get('comment')[0], 'The comment may not be greater than 200 characters.');
     }
 }
