@@ -64,4 +64,17 @@ class UserCreate extends FormRequest
     {
         return [];
     }
+
+    /**
+     * Password rules which does not get used often in this application
+     *
+     * @return array
+     */
+    public function passwordRules()
+    {
+        return [
+            'password' => 'required|string|min:6',
+            'confirm_password' => 'required|same:password',
+        ];
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\User\UserCreate;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -51,9 +52,8 @@ class ChangePasswordController extends Controller
      */
     public function validatePassword($request)
     {
-        $request->validate([
-            'password' => 'required|string|min:6',
-            'confirm_password' => 'required|same:password',
-        ]);
+        $userCreateInstance = new UserCreate;
+
+        $request->validate($userCreateInstance->passwordRules());
     }
 }
