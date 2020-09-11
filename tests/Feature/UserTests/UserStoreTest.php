@@ -4,6 +4,7 @@ namespace Tests\Feature\UserTests;
 
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Arr;
 use Tests\TestCase;
 
 class UserStoreTest extends TestCase
@@ -23,16 +24,18 @@ class UserStoreTest extends TestCase
     }
 
     /** @test */
-    public function a_superadmin_can_store_a_user()
+    public function a_admin_can_store_a_user()
     {
         $this->signIn(['admin' => true]);
 
         $data = factory(User::class)->raw();
 
+        Arr::forget($data, ['password', 'last_password_change']);
+
         $this->post(route($this->namedRoute), $data)
             ->assertRedirect(route('admin.user.index'));
 
-        $this->assertDatabaseHas((new User)->getTable(), ['username' => $data['username']]);
+        $this->assertDatabaseHas((new User)->getTable(), $data);
     }
 
 
