@@ -17,7 +17,20 @@ class UserController extends AdminBaseController
      */
     public function index()
     {
-        return Inertia::render('User/Admin/Index');
+
+        $users = User::paginate(15)->map(function (User $user) {
+            return [
+                'id' => $user->id,
+                'fullName' => $user->fullName(),
+                'active' => $user->active,
+                'admin' => $user->admin,
+                'created_at' => readable_date_time_string($user->created_at),
+            ];
+        });
+
+        return Inertia::render('User/Admin/Index', [
+            'users' => $users,
+        ]);
     }
 
     /**
